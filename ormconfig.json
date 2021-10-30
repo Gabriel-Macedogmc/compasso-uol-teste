@@ -1,0 +1,25 @@
+[
+  {
+    "type": "postgres",
+    "port": 5432,
+    "host": "localhost",
+    "username": "postgres",
+    "password": "123",
+    "database": "default_DB",
+    "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
+    "entities": ["./src/modules/**/models/**.ts"],
+    "cli": {
+      "migrationsDir": "./src/shared/infra/typeorm/migrations"
+    }
+  },
+  {
+    "type": "sqlite",
+    "logging": true,
+    "database": "./src/shared/infra/typeorm/migrations/database.sqlite",
+    "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
+    "entities": ["./src/modules/**/models/**.ts"],
+    "cli": {
+      "migrationsDir": "./src/shared/infra/typeorm/migrations"
+    }
+  }
+]
