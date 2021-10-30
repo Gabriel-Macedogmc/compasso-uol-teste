@@ -1,16 +1,14 @@
-FROM node:12.19.0-alpine3.10
+FROM node
 
-RUN apk update && apk add bash
 
-WORKDIR /app
+WORKDIR /usr/app
 
-ENV NODE_ENV=dev-k8s
+COPY package.json ./
 
-COPY ./package.json ./
-RUN npm install
-COPY ./dist .
-COPY ./ormconfig.js .
+RUN yarn
+
+COPY . .
 
 EXPOSE 3333
 
-CMD ["npm", "run", "prod"]
+CMD ["yarn", "run", "dev"]

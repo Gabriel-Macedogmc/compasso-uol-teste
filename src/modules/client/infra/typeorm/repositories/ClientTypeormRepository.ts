@@ -21,6 +21,7 @@ export class ClientTypeormRepository implements IClientRepository {
 
   public async getAllByName(name: string): Promise<IClientModel[]> {
     const client = await this.ormRepository.find({
+      relations: ["city"],
       where: { full_name: name },
     });
 
@@ -28,7 +29,9 @@ export class ClientTypeormRepository implements IClientRepository {
   }
 
   public async getSingleById(id: string): Promise<IClientModel> {
-    const client = await this.ormRepository.findOne(id);
+    const client = await this.ormRepository.findOne(id, {
+      relations: ["city"],
+    });
 
     return client;
   }

@@ -34,6 +34,7 @@ export class CityTypeormRepository implements ICityRepository {
   public async getAllByState(state: string): Promise<ICityModel[]> {
     const cities = await this.ormRepository
       .createQueryBuilder("cities")
+      .leftJoinAndSelect("cities.clients", "client")
       .where("cities.state ILIKE :state", { state: `%${state}%` })
       .getMany();
 
