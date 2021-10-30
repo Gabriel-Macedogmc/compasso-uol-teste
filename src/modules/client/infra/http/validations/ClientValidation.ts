@@ -12,4 +12,20 @@ const createClientValidation = celebrate({
   },
 });
 
-export { createClientValidation };
+const updateClientValidation = celebrate({
+  [Segments.BODY]: {
+    full_name: Joi.string().max(70),
+  },
+});
+
+const paramsClientValidation = celebrate({
+  [Segments.PARAMS]: {
+    id: Joi.string().uuid().required(),
+  },
+});
+
+export {
+  createClientValidation,
+  updateClientValidation,
+  paramsClientValidation,
+};

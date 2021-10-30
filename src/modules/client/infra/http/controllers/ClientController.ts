@@ -2,6 +2,8 @@ import {
   CreateClientUseCase,
   GetClientByNameUseCase,
   GetClientByIdUseCase,
+  UpdateClientUseCase,
+  RemoveClientUseCase,
 } from "@modules/client/use-cases/index";
 import { container } from "tsyringe";
 import {
@@ -43,5 +45,29 @@ export class ClientController {
     const client = await service.getClientByName(name);
 
     return res.json(client);
+  }
+
+  public async update(
+    req: HttpRequestAdapter,
+    res: HttpResponseAdapter,
+  ): Promise<HttpResponseAdapter> {
+    const service = container.resolve(UpdateClientUseCase);
+    const { id } = req.params;
+
+    const client = await service.updateClient({ id, ...req.body });
+
+    return res.json(client);
+  }
+
+  public async delete(
+    req: HttpRequestAdapter,
+    res: HttpResponseAdapter,
+  ): Promise<HttpResponseAdapter> {
+    const service = container.resolve(RemoveClientUseCase);
+    const { id } = req.params;
+
+    await service.removeClient(id);
+
+    return res.status(204).json();
   }
 }
