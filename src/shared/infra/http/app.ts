@@ -7,6 +7,8 @@ import express, { Request, Response, NextFunction } from "express";
 import { errors } from "celebrate";
 import { AppError } from "@shared/errors/AppError";
 import { routers } from "./routes/index";
+import { serve, setup } from "swagger-ui-express";
+import swaggerConfig from "./../docs/swagger.json";
 
 const currentHour = new Date(Date.now()).getHours();
 const currentMinutes = new Date(Date.now()).getMinutes();
@@ -33,6 +35,7 @@ const app = express();
 app.use(express.json());
 app.use(routers);
 app.use(errors());
+app.use("/api-docs", serve, setup(swaggerConfig));
 
 app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
   if (err instanceof AppError) {
