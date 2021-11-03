@@ -1,0 +1,370 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Compasso UOL Test Documentation",
+    "description": "This is an API rest",
+    "version": "1.0.0",
+    "contact": {
+      "email": "gabrielmacedogmc@gmail.com"
+    }
+  },
+  "paths": {
+    "/city/": {
+      "post": {
+        "tags": ["City"],
+        "summary": "Cria a Cidade",
+        "description": "Nesta rota é possível criar uma nova cidade.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/City"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/CityResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/city/name/{name}": {
+      "get": {
+        "tags": ["City"],
+        "summary": "Mostra uma Cidade",
+        "description": "Nesta rota é possível mostrar uma cidade.",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/CityResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+
+    "/city/state/{state}": {
+      "get": {
+        "tags": ["City"],
+        "summary": "Mostra todas cidades de um Estado",
+        "description": "Nesta rota é possível mostrar todas cidades de um estado.",
+        "parameters": [
+          {
+            "name": "state",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/CityResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/client/": {
+      "post": {
+        "tags": ["Client"],
+        "summary": "Cria o Cliente",
+        "description": "Nesta rota é possível criar um cliente.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Client"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/ClientResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+
+    "/client/name/{name}": {
+      "get": {
+        "tags": ["Client"],
+        "summary": "Mostra todos Clientes com o Nome",
+        "description": "Nesta rota é possível mostrar todos os clientes.",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/ClientResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/client/{id}": {
+      "get": {
+        "tags": ["Client"],
+        "summary": "Mostra um Cliente",
+        "description": "Nesta rota é possível mostrar um cliente.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/ClientResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Client"],
+        "summary": "Atualiza o Nome do Cliente",
+        "description": "Nesta rota é possível atualizar um cliente.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "full_name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/ClientResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Client"],
+        "summary": "Deleta um Cliente",
+        "description": "Nesta rota é possível remover um cliente.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "City": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "length": "3 à 100"
+        },
+        "state": {
+          "type": "string",
+          "length": "3 à 100"
+        }
+      },
+      "required": ["name", "state"]
+    },
+    "CityResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "id": "4f77add2-e27c-40b8-87e5-e631895885cd",
+        "name": "Caragua",
+        "state": "São-Paulo",
+        "created_at": "2021-11-03T03:01:02.834Z"
+      }
+    },
+    "Client": {
+      "type": "object",
+      "properties": {
+        "full_name": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "string"
+        },
+        "birth_date": {
+          "type": "string"
+        },
+        "age": {
+          "type": "string"
+        },
+        "city_id": {
+          "type": "string"
+        }
+      },
+      "required": ["full_name", "sex", "birth_date", "age", "city_id"]
+    },
+    "ClientResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "uuid"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "string"
+        },
+        "birth_date": {
+          "type": "string"
+        },
+        "age": {
+          "type": "string"
+        },
+        "city_id": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "city": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "example": {
+        "id": "51a1b68b-6b28-449f-bf92-202108c1b45f",
+        "full_name": "Jao Marcelo",
+        "sex": "Masculino",
+        "birth_date": "31/01/2002",
+        "age": "19",
+        "city_id": "4f77add2-e27c-40b8-87e5-e631895885cd",
+        "created_at": "2021-11-03T04:30:59.388Z",
+        "updated_at": "2021-11-03T04:30:59.388Z"
+      }
+    }
+  }
+}
