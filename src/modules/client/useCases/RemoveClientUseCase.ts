@@ -1,7 +1,8 @@
+import "reflect-metadata";
 import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 import { IClientRepository } from "@modules/client/domain/repositories/IClientRepository";
-import { IRemoveClientUseCase } from "./../domain/use-cases/IRemoveClientUseCase";
+import { IRemoveClientUseCase } from "../domain/useCases/IRemoveClientUseCase";
 
 @injectable()
 export class RemoveClientUseCase implements IRemoveClientUseCase {

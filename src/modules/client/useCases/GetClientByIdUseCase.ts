@@ -1,8 +1,9 @@
+import "reflect-metadata";
 import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 import { IClientModel } from "../domain/models/IClientModel";
 import { IClientRepository } from "../domain/repositories/IClientRepository";
-import { IGetClientByIdUseCase } from "../domain/use-cases";
+import { IGetClientByIdUseCase } from "../domain/useCases";
 
 @injectable()
 export class GetClientByIdUseCase implements IGetClientByIdUseCase {

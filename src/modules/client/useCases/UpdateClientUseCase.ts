@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { AppError } from "@shared/errors/AppError";
 import { IClientRepository } from "@modules/client/domain/repositories/IClientRepository";
 import { inject, injectable } from "tsyringe";
@@ -5,7 +6,7 @@ import {
   IUpdateClientModel,
   IClientModel,
 } from "../domain/models/IClientModel";
-import { IUpdateClientUseCase } from "./../domain/use-cases/IUpdateClientUseCase";
+import { IUpdateClientUseCase } from "../domain/useCases/IUpdateClientUseCase";
 
 @injectable()
 export class UpdateClientUseCase implements IUpdateClientUseCase {

@@ -4,7 +4,7 @@ import {
   GetClientByIdUseCase,
   UpdateClientUseCase,
   RemoveClientUseCase,
-} from "@modules/client/use-cases/index";
+} from "@modules/client/useCases/index";
 import { container } from "tsyringe";
 import {
   HttpRequestAdapter,

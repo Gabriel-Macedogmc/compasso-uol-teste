@@ -1,7 +1,8 @@
-import { IClientRepository } from "./../domain/repositories/IClientRepository";
+import "reflect-metadata";
+import { IClientRepository } from "../domain/repositories/IClientRepository";
 import { inject, injectable } from "tsyringe";
 import { IClientModel } from "../domain/models/IClientModel";
-import { IGetClientByNameUseCase } from "../domain/use-cases";
+import { IGetClientByNameUseCase } from "../domain/useCases";
 
 @injectable()
 export class GetClientByNameUseCase implements IGetClientByNameUseCase {

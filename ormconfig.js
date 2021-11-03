@@ -17,7 +17,7 @@ let database = {
 let testDatabase = {
   type: "sqlite",
   logging: true,
-  database: "./src/shared/infra/typeorm/migrations/database.sqlite",
+  database: "./src/shared/infra/typeorm/migrations/database.test.sqlite",
   migrations: ["./src/shared/infra/typeorm/migrations/*.ts"],
   entities: ["./src/modules/**/models/**.ts"],
   cli: {
