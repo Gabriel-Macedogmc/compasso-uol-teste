@@ -1,15 +1,16 @@
-const { pathsToModuleNameMapper } = require("ts-jest/utils");
-const { compilerOptions } = require("./tsconfig");
+import { pathsToModuleNameMapper } from "ts-jest/utils";
 
-module.exports = {
+import { compilerOptions } from "./tsconfig.json";
+
+export default {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
   // Stop running tests after `n` failures
-  // bail: 0,
+  bail: true,
 
   // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "/tmp/jest_rs",
+  // cacheDirectory: "C:\\Users\\afpb0\\AppData\\Local\\Temp\\jest",
 
   // Automatically clear mock calls and instances between every test
   clearMocks: true,
@@ -18,21 +19,21 @@ module.exports = {
   collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ["<rootDir>/src/modules/**/services/*.ts"],
+  collectCoverageFrom: ["<rootDir>/src/modules/**/useCases/**/*.ts"],
 
   // The directory where Jest should output its coverage files
   coverageDirectory: "coverage",
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
-  //   "/node_modules/"
+  //   "\\\\node_modules\\\\"
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: "v8",
 
   // A list of reporter names that Jest uses when writing coverage reports
-  coverageReporters: ["json", "text", "lcov", "clover"],
+  coverageReporters: ["text-summary", "lcov"],
 
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: undefined,
@@ -117,7 +118,7 @@ module.exports = {
   // ],
 
   // Allows you to use a custom runner instead of Jest's default test runner
-  // runner: "jest-runmner",
+  // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
   // setupFiles: [],
@@ -145,7 +146,7 @@ module.exports = {
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
-  //   "/node_modules/"
+  //   "\\\\node_modules\\\\"
   // ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
@@ -168,8 +169,8 @@ module.exports = {
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
-  //   "/node_modules/",
-  //   "\\.pnp\\.[^\\/]+$"
+  //   "\\\\node_modules\\\\",
+  //   "\\.pnp\\.[^\\\\]+$"
   // ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them

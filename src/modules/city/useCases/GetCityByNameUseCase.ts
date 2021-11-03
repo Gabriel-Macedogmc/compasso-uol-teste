@@ -1,8 +1,9 @@
+import "reflect-metadata";
 import { AppError } from "@shared/errors/AppError";
-import { ICityRepository } from "./../domain/repositories/ICityRepositories";
+import { ICityRepository } from "../domain/repositories/ICityRepositories";
 import { inject, injectable } from "tsyringe";
 import { ICityModel } from "../domain/models/ICityModel";
-import { IGetCityByNameUseCase } from "./../domain/use-cases/IGetCityByNameUseCase";
+import { IGetCityByNameUseCase } from "../domain/useCases/IGetCityByNameUseCase";
 
 @injectable()
 export class GetCityByNameUseCase implements IGetCityByNameUseCase {

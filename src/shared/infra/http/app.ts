@@ -1,9 +1,9 @@
+import "reflect-metadata";
 import "dotenv/config";
 import "express-async-errors";
 import "@shared/container/index";
 import createConnection from "../typeorm";
 import express, { Request, Response, NextFunction } from "express";
-import { serve, setup } from "swagger-ui-express";
 import { errors } from "celebrate";
 import { AppError } from "@shared/errors/AppError";
 import { routers } from "./routes/index";
@@ -33,7 +33,6 @@ const app = express();
 app.use(express.json());
 app.use(routers);
 app.use(errors());
-//app.use("/api-docs", serve, setup(swaggerConfig));
 
 app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
   if (err instanceof AppError) {

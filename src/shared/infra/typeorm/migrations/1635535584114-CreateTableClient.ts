@@ -18,8 +18,8 @@ export class CreateTableClient1635535584114 implements MigrationInterface {
           },
           {
             name: "sex",
-            type: "enum",
-            enum: ["Masculino", "Feminino", "Outro", "Não Informado"],
+            type: "varchar",
+            length: "13",
             default: "'Não Informado'",
           },
           {

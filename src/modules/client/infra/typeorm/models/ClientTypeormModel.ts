@@ -8,7 +8,7 @@ import {
   PrimaryColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { IClientModel, SexEnum } from "./../../../domain/models/IClientModel";
+import { IClientModel } from "./../../../domain/models/IClientModel";
 import { v4 as uuid } from "uuid";
 
 @Entity("client")
@@ -19,8 +19,8 @@ export class ClientTypeormModel implements IClientModel {
   @Column()
   full_name: string;
 
-  @Column({ type: "enum", enum: SexEnum, default: SexEnum.UNINFORMED })
-  sex: SexEnum;
+  @Column()
+  sex: string;
 
   @Column()
   birth_date: string;
