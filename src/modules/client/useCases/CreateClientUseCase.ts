@@ -1,8 +1,9 @@
+import "reflect-metadata";
 import { AppError } from "@shared/errors/AppError";
-import { IClientModel } from "./../domain/models/IClientModel";
-import { IClientRepository } from "./../domain/repositories/IClientRepository";
+import { IClientModel } from "../domain/models/IClientModel";
+import { IClientRepository } from "../domain/repositories/IClientRepository";
 import { inject, injectable } from "tsyringe";
-import { ICreateClientUseCase } from "../domain/use-cases/ICreateClientUseCase";
+import { ICreateClientUseCase } from "../domain/useCases/ICreateClientUseCase";
 import { ICityRepository } from "@modules/city/domain/repositories/ICityRepositories";
 
 @injectable()
