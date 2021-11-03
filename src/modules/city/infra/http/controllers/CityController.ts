@@ -2,7 +2,7 @@ import {
   CreateCityUseCase,
   GetCityByNameUseCase,
   GetCityByStateUseCase,
-} from "@modules/city/use-cases/index";
+} from "@modules/city/useCases/index";
 import { container } from "tsyringe";
 import {
   HttpRequestAdapter,

@@ -1,7 +1,8 @@
-import { ICityRepository } from "./../domain/repositories/ICityRepositories";
+import "reflect-metadata";
+import { ICityRepository } from "../domain/repositories/ICityRepositories";
 import { inject, injectable } from "tsyringe";
 import { ICityModel } from "../domain/models/ICityModel";
-import { ICreateCityUseCase } from "./../domain/use-cases/ICreateCityUseCase";
+import { ICreateCityUseCase } from "../domain/useCases/ICreateCityUseCase";
 import { AppError } from "@shared/errors/AppError";
 
 @injectable()
