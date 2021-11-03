@@ -46,7 +46,7 @@ export class CityRepositorySpy implements ICityRepository {
     return filter;
   }
 
-  public async getSingleById(id: string): Promise<ICityModel> {
+  public async getSingleById(id: string): Promise<ICityModel | undefined> {
     const params = MockCity();
 
     const data: ICityModel[] = [

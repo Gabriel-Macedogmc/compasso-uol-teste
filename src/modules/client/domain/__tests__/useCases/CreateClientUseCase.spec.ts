@@ -20,7 +20,7 @@ const makeSut = () => {
 
 describe("UseCase Create Client", () => {
   it("should be return new client", async () => {
-    const { sut, cityRepositorySpy, clientRepositorySpy } = makeSut();
+    const { sut, cityRepositorySpy } = makeSut();
 
     const cityParams = MockCity();
     const { age, birth_date, full_name, sex } = MockClientParams();
@@ -42,16 +42,16 @@ describe("UseCase Create Client", () => {
   });
 
   it("should be return error if not exist city", async () => {
-    const { sut, cityRepositorySpy, clientRepositorySpy } = makeSut();
+    const { sut, cityRepositorySpy } = makeSut();
 
-    const { age, birth_date, full_name, sex } = MockClientParams();
+    const clientParams = MockClientParams();
 
     jest
       .spyOn(cityRepositorySpy, "getSingleById")
       .mockImplementationOnce(() => new Promise(reject => reject(undefined)));
 
     await expect(
-      sut.create({ age, birth_date, full_name, sex, city_id: "any_city" }),
-    ).rejects.toBeInstanceOf(AppError);
+      sut.create({ ...clientParams, city_id: "any_city_id" }),
+    ).rejects.toEqual(new AppError("Cidade não Encontrada", 404));
   });
 });

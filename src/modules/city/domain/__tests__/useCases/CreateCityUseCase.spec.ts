@@ -18,10 +18,6 @@ describe("db create city", () => {
     const { sut, cityRepositorySpy } = makeSut();
     const params = MockCity();
 
-    jest
-      .spyOn(cityRepositorySpy, "getSingleByName")
-      .mockImplementationOnce(() => new Promise(reject => reject(undefined)));
-
     const city = await sut.create({ ...params, name: "newCity" });
 
     expect(city).toEqual({ ...params, name: "newCity" });
@@ -30,15 +26,15 @@ describe("db create city", () => {
   it("should throw a error if city already exist", async () => {
     const { sut, cityRepositorySpy } = makeSut();
     const params = MockCity();
+
+    const cityExist = await cityRepositorySpy.create(params);
+
     jest
       .spyOn(cityRepositorySpy, "getSingleByName")
-      .mockImplementationOnce(() => new Promise(resolve => resolve(params)));
+      .mockImplementationOnce(() => new Promise(resolve => resolve(cityExist)));
 
     await expect(
-      sut.create({
-        ...params,
-        name: "existName",
-      }),
+      sut.create({ ...params, name: cityExist.name }),
     ).rejects.toBeInstanceOf(AppError);
   });
 });
