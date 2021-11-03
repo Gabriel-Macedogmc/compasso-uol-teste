@@ -5,11 +5,11 @@
 ## 1° Instalar as Dependências
 -> Rodar o Comando `yarn` no terminal
 
-## 2° Rodar Migrations
--> Utilizar o Comando `yarn typeorm migration:run` para rodar todas as migrations necessárias
-
-## 3° Rodar a Aplicação com Docker-Compose
+## 2° Rodar a Aplicação com Docker-Compose
 -> Utilizar o Comando `docker-compose up` para a instalação e inicialização da aplicação 
+
+## 3° Rodar Migrations
+-> Utilizar o Comando `yarn typeorm migration:run` para rodar todas as migrations necessárias
 
 ## 4° Utilizar Swagger para Rotas
 -> Abrir no navegador com a aplicação rodando o endpoint http://localhost:3333/api-docs para acessar toda a documentação das rotas
