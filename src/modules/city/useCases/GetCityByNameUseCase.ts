@@ -12,12 +12,13 @@ export class GetCityByNameUseCase implements IGetCityByNameUseCase {
     private readonly cityRepository: ICityRepository,
   ) {}
   public async getCityByName(name: string): Promise<ICityModel> {
-    const city = await this.cityRepository.getSingleByName(name);
+    const cityExist = await this.cityRepository.getSingleByName(name);
 
-    if (!city) {
+    if (!cityExist) {
       throw new AppError("Cidade não encontrada", 404);
     }
+    const cityResponse = await this.cityRepository.getSingleById(cityExist.id);
 
-    return city;
+    return cityResponse;
   }
 }
